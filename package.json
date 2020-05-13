@@ -1,0 +1,29 @@
+{
+  "name": "GalatiteBot",
+  "version": "0.0.1",
+  "description": "GalatiteBot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kevin-Jansen/GalatiteBot.git"
+  },
+  "keywords": [],
+  "author": "Kevin Jansen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kevin-Jansen/GalatiteBot/issues"
+  },
+  "homepage": "https://github.com/Kevin-Jansen/GalatiteBot#readme",
+  "dependencies": {
+    "cron": "^1.8.2",
+    "discord.js": "^12.2.0",
+    "enmap": "^5.2.4",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
