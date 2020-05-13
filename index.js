@@ -10,28 +10,6 @@ const fs = require('fs');
 const Enmap = require('enmap');
 const CronJob = require('cron').CronJob;
 
-const SendLore = () => {
-    // Execute channel finding here
-    const channel = client.channels.cache.get(config.loreId);
-
-    // Fetch lore from txt file
-    let array = fs.readFileSync('Lore_Factoids.txt').toString().split('\n').filter(v => v !== '\r');
-
-    // Create embed message for the lore message
-    const message = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle('A new message from Lore Master Celarus has arrived.')
-        // .setAuthor('Lore Master Celarus')
-        .addField('Dear reader,', array[Math.floor(Math.random() * array.length)])
-        .setTimestamp();
-
-    // mention everyone
-    channel.send('@everyone');
-
-    // Send embed message to channel
-    channel.send(message);
-};
-
 // Listen to all possible events
 fs.readdir("./events/", (err, files) => {
     if (err) return console.error(err);
@@ -52,17 +30,26 @@ fs.readdir("./commands/", (err, files) => {
         let props = require(`./commands/${file}`);
         let commandName = file.split(".")[0];
         console.log(`Attempting to load command ${commandName}`);
+
+        // For now don't register vote
+        if (commandName === 'vote') return;
+
         client.commands.set(commandName, props);
     });
+
+    console.log('Done')
 });
 
 client.on('ready', () => {
     // Create the lore cronjob that fires every
+    console.log('Firing up Lore CronJob');
+
     const LoreJob = new CronJob(
-        '*/10 * * * * 2,4,6',
+        '1 00 17 * * */1',
         function() {
-            console.log('Sending lore message');
-            SendLore();
+            console.log('Sending lore message at', Date.now());
+            const lore = require('./Jobs/lore');
+            lore.run(client, Discord);
         }
     );
     LoreJob.start();
