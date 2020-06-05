@@ -14,7 +14,7 @@ const CronJob = require('cron').CronJob;
 fs.readdir("./Events/", (err, files) => {
     if (err) return console.error(err);
     files.forEach(file => {
-        const event = require(`./events/${file}`);
+        const event = require(`./Events/${file}`);
         let eventName = file.split(".")[0];
         client.on(eventName, event.bind(null, client));
     });
@@ -27,7 +27,7 @@ fs.readdir("./Commands/", (err, files) => {
     if (err) return console.error(err);
     files.forEach(file => {
         if (!file.endsWith(".js")) return;
-        let props = require(`./commands/${file}`);
+        let props = require(`./Commands/${file}`);
         let commandName = file.split(".")[0];
         console.log(`Attempting to load command ${commandName}`);
 
