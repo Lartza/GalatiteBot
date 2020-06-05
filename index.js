@@ -32,7 +32,7 @@ fs.readdir("./commands/", (err, files) => {
         console.log(`Attempting to load command ${commandName}`);
 
         // For now don't register vote
-        if (commandName === 'vote') return;
+        // if (commandName === 'vote') return;
 
         client.commands.set(commandName, props);
     });
@@ -45,7 +45,7 @@ client.on('ready', () => {
     console.log('Firing up Lore CronJob');
 
     const LoreJob = new CronJob(
-        '1 00 17 * * */1',
+        '1 00 17 * * */2',
         function() {
             console.log('Sending lore message at', Date.now());
             const lore = require('./Jobs/lore');
@@ -53,6 +53,13 @@ client.on('ready', () => {
         }
     );
     LoreJob.start();
+
+    // const Job = new CronJob(
+    //     '1 */1 * * * *',
+    //     function () {
+    //         console.log('This is running every 1 minute')
+    //     }
+    // )
 });
 
 client.login(config.token);
