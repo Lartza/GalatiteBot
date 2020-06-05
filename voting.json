@@ -1,0 +1,65 @@
+{
+  "trial": [
+    {
+      "name": "Aetherian Archives",
+      "abr": "AA",
+      "emoji": "🧙‍♂️",
+      "votes": []
+    },
+    {
+      "name": "Hel Ra Citadel",
+      "abr": "HRC",
+      "emoji": "🏜️",
+      "votes": []
+    },
+    {
+      "name": "Sanctum Ophidia",
+      "abr": "SO",
+      "emoji": "🐍",
+      "votes": []
+    },
+    {
+      "name": "Maw of Lorkhaj",
+      "abr": "MOL",
+      "emoji": "🌑",
+      "votes": []
+    },
+    {
+      "name": "Halls of Fabrication",
+      "abr": "HOF",
+      "emoji": "🤖",
+      "votes": [
+        "micha3939",
+        "Mando"
+      ]
+    },
+    {
+      "name": "Asylum Sanctorium",
+      "abr": "AS",
+      "emoji": "🔩",
+      "votes": []
+    },
+    {
+      "name": "Cloudrest ",
+      "abr": "CR",
+      "emoji": "🧝‍♂️",
+      "votes": []
+    },
+    {
+      "name": "Sunspire",
+      "abr": "SS",
+      "emoji": "🐲",
+      "votes": [
+        "Mando"
+      ]
+    },
+    {
+      "name": "Kyne's Aegis",
+      "abr": "KA",
+      "emoji": "🗻",
+      "votes": []
+    }
+  ],
+  "trialVotingOpen": true,
+  "nextTrial": ""
+}

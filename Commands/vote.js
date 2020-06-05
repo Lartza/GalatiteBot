@@ -1,52 +1,107 @@
-const Discord = require('discord.js')
+const Discord = require('discord.js');
+const fs = require('fs');
 
-module.exports.run = (client, message, args) => {
-    message.channel.messages.fetch({limit: 99})
-        .then(messages => message.channel.bulkDelete(messages));
+module.exports.run = async (client, message, args) => {
+    message.delete();
+
+    const trials = [
+        {name: 'Aetherian Archives', abr: 'AA', emoji: '🧙‍♂️', votes: []},
+        {name: 'Hel Ra Citadel', abr: 'HRC', emoji: '🏜️', votes: []},
+        {name: 'Sanctum Ophidia', abr: 'SO', emoji: '🐍', votes: []},
+        {name: 'Maw of Lorkhaj', abr: 'MOL', emoji: '🌑', votes: []},
+        {name: 'Halls of Fabrication', abr: 'HOF', emoji: '🤖', votes: []},
+        {name: 'Asylum Sanctorium', abr: 'AS', emoji: '🔩', votes: []},
+        {name: 'Cloudrest ', abr: 'CR', emoji: '🧝‍♂️', votes: []},
+        {name: 'Sunspire', abr: 'SS', emoji: '🐲', votes: []},
+        {name: 'Kyne\'s Aegis', abr: 'KA', emoji: '🗻', votes: []},
+    ];
+
+    console.log(args)
+
+    // Voting for trial
+    if (args[0] === 'trial' && args[1] === 'end') {
+        if (message.author.id !== '253176948128350208') return;
+
+        let rawData = fs.readFileSync('voting.json');
+        let voting = JSON.parse(rawData);
+
+        let winner = [];
+        for (let trial of voting.trial) {
+
+            if (winner.length === 0) {
+                winner.push(trial)
+            }
+
+            if (winner[0].votes.length < trial.votes.length) {
+                winner[0] = trial
+            }
+        }
+
+        voting.trialVotingOpen = true;
+
+        let data = JSON.stringify(voting, null, 2);
+        fs.writeFileSync('voting.json', data);
+
+        return message.channel.send(`@everyone The voting has stopped. And the trial for next saturday will be: ***${winner[0].name}*** \n \n Chose your desired role in the Trial-event-talk channel now!`)
+    }
 
     if (args[0] === 'trial') {
+        if (message.author.id !== '253176948128350208') return;
 
         // Get next saturday date
         let s = new Date();
         s.setDate(s.getDate() + (6 - 1 - s.getDay() + 7) % 7 + 1);
 
-        const trials = [
-            {name: 'Aetherian Archives', emoji: '😄'},
-            {name: 'Hel Ra Citadel', emoji: '🏜️'},
-            {name: 'Sanctum Ophidia', emoji: '🐍'},
-            {name: 'Maw of Lorkhaj', emoji: '🌑'},
-            {name: 'Halls of Fabrication', emoji: '🤖'},
-            {name: 'Asylum Sanctorium', emoji: '🔩'},
-            {name: 'Cloudrest ', emoji: '🧝‍♂️'},
-            {name: 'Sunspire', emoji: '🐲'},
-            {name: 'Kyne\'s Aegis', emoji: '🗻'},
-        ];
+        let rawData = fs.readFileSync('voting.json');
+        let voting = JSON.parse(rawData);
 
-        trials.forEach(t => console.log(t.name, t.emoji))
+        voting.trial = trials
 
-        let msg = `@everyone Good people of the Galatite Order, the goal of saturdays (${s}) Trial-Run is your decision! :wink: \n Here are your choices:\n\n`;
+        voting.trialVotingOpen = true;
+
+        let data = JSON.stringify(voting, null, 2);
+        fs.writeFileSync('voting.json', data);
+
+        // fs.writeFileSync('voting.json', voting);
+
+        let msg = `@everyone Good people of the Galatite Order, the goal of saturdays (${s.getDate()}-${s.getMonth()}-${s.getFullYear()}) Trial-Run is your decision! :wink: \n Here are your choices:\n\n`;
 
         for (let t of trials) {
-            msg += `[${t.emoji}] ${t.name} \n`
+            msg += `${t.emoji} ${t.name} [${t.abr}] \n`
         }
 
-        const filter = (reaction) => {
-            return true
-        }
+        msg += '\n You can vote by doing \`.vote {abbreviation}\` in chat.';
 
-        message.channel.send(msg)
-            .then(async m => {
-                for (const t of trials) {
-                    await m.react(t.emoji);
+        return message.channel.send(msg)
+        // return message.channel.send(msg).then(msg => {
+        //     trials.forEach(trial => msg.react(trial.emoji))
+        // })
+    }
+
+    if (trials.some(trial => trial.abr === args[0].toUpperCase())) {
+        console.log(message.author.username)
+        let rawData = fs.readFileSync('voting.json');
+        let voting = JSON.parse(rawData);
+
+        if (voting.trialVotingOpen) {
+            voting.trial.forEach(trial => {
+                if (trial.abr === args[0].toUpperCase()) {
+                    if (trial.votes.includes(message.author.username)) {
+                        return message.channel.send('You can not vote twice for the same trial.')
+                            .then(msg => msg.delete({timeout: 3000}))
+                    }
+                    trial.votes.push(message.author.username);
+
+                    message.channel.send('Vote registered!').then(msg => {
+                        msg.delete({timeout: 3000})
+                    })
                 }
+            });
 
-                m.awaitReactions(filter, {time: 1000})
-                    .then(collected => {
-                        collected.forEach(c => {
-                            console.log(c.emoji.name === trials[0].emoji)
-                        })
-                    });
-            })
-
+            let data = JSON.stringify(voting, null, 2);
+            fs.writeFileSync('voting.json', data);
+        } else {
+            message.channel.send(`Sorry! There is no active vote.`)
+        }
     }
 };
