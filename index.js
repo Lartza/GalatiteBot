@@ -11,7 +11,7 @@ const Enmap = require('enmap');
 const CronJob = require('cron').CronJob;
 
 // Listen to all possible events
-fs.readdir("./events/", (err, files) => {
+fs.readdir("./Events/", (err, files) => {
     if (err) return console.error(err);
     files.forEach(file => {
         const event = require(`./events/${file}`);
@@ -23,7 +23,7 @@ fs.readdir("./events/", (err, files) => {
 client.commands = new Enmap();
 
 // Register all available commands into the client
-fs.readdir("./commands/", (err, files) => {
+fs.readdir("./Commands/", (err, files) => {
     if (err) return console.error(err);
     files.forEach(file => {
         if (!file.endsWith(".js")) return;
