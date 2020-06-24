@@ -17,10 +17,14 @@ module.exports.run = (client, message, args) => {
                     value: 'This command is used to vote for our weekly trial. You can vote by doing \`.vote {abbreviation}\`'
                 },
                 {
-                    name: 'Random Dungeon picker',
+                    name: 'Random dungeon picker',
                     value: 'This command picks a random dungeon from the given dungeon abbreviations like fg1 or vFG1. You can use this command by doing \`.rd fg1 fg2\`.'
-                }
+                },
+                {
+                    name: 'Random dungeon order',
+                    value: 'This command is designed for our dungeon grind event. Use this to randomize the order in which dungeons you\'ll run. You can use this command by doing \`.rdo nFG1 vSCP nICP\`'
+                },
             ]
-        )
+        );
     message.channel.send(embed)
 }
