@@ -5,15 +5,15 @@ exports.run = (client, message, args) => {
     let m;
 
     switch (random) {
-        case 7 :
+        case 0 :
             message.channel.send('Out.').catch(console.error);
             message.channel.send('Serving!').catch(console.error);
             break;
-        case 14 :
+        case 1 :
             message.channel.send('Pong!').catch(console.error);
             message.channel.send('Out.').catch(console.error);
             break;
-        case 24:
+        case 2:
             message.channel.send('Miss.').catch(console.error);
             break;
         default :
