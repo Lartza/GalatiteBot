@@ -13,7 +13,7 @@ exports.run = (client, message, args) => {
             message.channel.send('Pong!').catch(console.error);
             message.channel.send('Out.').catch(console.error);
             break;
-        case 25:
+        case 24:
             message.channel.send('Miss.').catch(console.error);
             break;
         default :
