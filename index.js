@@ -10,6 +10,13 @@ const fs = require('fs');
 const Enmap = require('enmap');
 const CronJob = require('cron').CronJob;
 
+//Test
+/*client.on('message', msg => {
+    if (msg.content === 'ping') {
+        msg.reply('pung');
+    }
+});*/
+
 // Listen to all possible events
 fs.readdir("./Events/", (err, files) => {
     if (err) return console.error(err);
@@ -46,7 +53,7 @@ client.on('ready', () => {
 
     const LoreJob = new CronJob(
         '1 00 17 * * */2',
-        function() {
+        function () {
             console.log('Sending lore message at', Date.now());
             const lore = require('./Jobs/lore');
             lore.run(client, Discord);
