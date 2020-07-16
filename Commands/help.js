@@ -18,12 +18,20 @@ module.exports.run = (client, message, args) => {
                 },
                 {
                     name: 'Random dungeon picker',
-                    value: 'This command picks a random dungeon from the given dungeon abbreviations like fg1 or vFG1. You can use this command by doing \`.rd fg1 fg2\`.'
+                    value: 'This command picks a random dungeon from the given dungeon abbreviations like fg1 or vFG1. You can use this command by doing \`.rd fg1 fg2\`'
                 },
                 {
                     name: 'Random dungeon order',
                     value: 'This command is designed for our dungeon grind event. Use this to randomize the order in which dungeons you\'ll run. You can use this command by doing \`.rdo nFG1 vSCP nICP\`'
                 },
+                {
+                    name: 'Roll',
+                    value: 'This command picks a random number from 1 to 100 if writen without parameters. If written with parameters returns a random number from min to max. You can use this command by doing \`.roll\` or \`.roll min max\`'
+                },
+                {
+                    name: 'Emote',
+                    value: 'This commad lets you "performe" an emote. You can use this command by doing \`.emote emoteText\` for example \`.emote is really shocked\`'
+                }
             ]
         );
     message.channel.send(embed)

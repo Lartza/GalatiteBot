@@ -9,8 +9,16 @@ module.exports.run = (client, message, args) => {
 }
 
 function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
+    for (let i = 0; i < array.length; i++) {
+
+        //random number for switch
+        const j = Math.floor(Math.random() * (array.length));
+
+        console.log(`rnd = ${j}; ${array[i]} <-> ${array[j]}`);
+
+        //switch
         [array[i], array[j]] = [array[j], array[i]];
+        
+        console.log(array);
     }
 }
