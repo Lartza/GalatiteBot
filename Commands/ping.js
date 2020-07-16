@@ -34,7 +34,7 @@ exports.run = (client, message, args) => {
             message.channel.send(`-pong! Dremora invade the earth and everyone was vaporized by Molag Bal :smiling_imp:. \nSince ${name} was the last to hit the ball, ${name} wins by vaporization-elimination! \nCongratulation to ${name}!!! :partying_face:`).catch(console.error);
 
         else if (rnd == 86)
-            message.channel.send(`-Ohh no! ${name} missed. **Puff** It turns out, that ${name} was Sheorogath in disguise the WHOLE TIME! :clown: \nSince Sheo is threatening me with a spoon right now: \n${name} wins!!! :partying_face:`).catch(console.error);
+            message.channel.send(`-Ohh no! ${name} missed. **Puff** It turns out, that ${name} was Sheogorath in disguise the WHOLE TIME! :clown: \nSince Sheo is threatening me with a spoon right now: \n${name} wins!!! :partying_face:`).catch(console.error);
 
         else if (rnd == 87)
             message.channel.send(`0100010001101111001000000111100101101111011101010010000001101011011011100110111101110111001000000110100001101111011101110010000001101100011011110110111001100111001000000100100100100111011101100110010100100000011000100110010101100101011011100010000001101100011011110110111101101011011010010110111001100111001000000110011001101111011100100010000001111001011011110111010100111111 \n...ohh sorry... Did not see you there... I mean: \n-Pong! ${name} wins! :partying_face:`).catch(console.error);
@@ -52,7 +52,7 @@ exports.run = (client, message, args) => {
         else if (rnd >= 90 && rnd <= 98)
             message.channel.send(`-Ohh no... ${name} missed. \n${name} is out! :thumbsdown:`).catch(console.error);
         else if (rnd == 99)
-            message.channel.send(`-Ohh no... ${name} missed. \nLooks like ${name} has taken too much moon sugar. \n${name} is out! :thumbsdown:`);
+            message.channel.send(`-Ohh no... ${name} missed. \nLooks like ${name} has taken too much moon sugar :woozy_face:. \n${name} is out! :thumbsdown:`);
 
 
         //default condition (just to be sure)
