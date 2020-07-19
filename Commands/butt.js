@@ -12,7 +12,7 @@ exports.run = (client, message, args) => {
         else if (rnd < 15) message.channel.send(getNeutralAnswer()).catch(console.error);
         else if (rnd < 20) message.channel.send(getNegativeAnswer()).catch(console.error);
         else {
-            Console.log(`Something went wrong. rnd = ${rnd}`);
+            console.log(`Something went wrong. rnd = ${rnd}`);
             message.channel.send(`Something went wrong. I'm sorry, consult with the bot mender!`).catch(console.error);
         }
     }
@@ -33,6 +33,10 @@ exports.run = (client, message, args) => {
             case 7: return `Outlook good.`
             case 8: return `Yes.`
             case 9: return `Signs point to yes.`
+            default: {
+                console.log(`Something went wrong. rnd = ${rnd}`);
+                return `Something went wrong. I'm sorry, consult with the bot mender!`
+            }
         }
     }
 
@@ -47,6 +51,10 @@ exports.run = (client, message, args) => {
             case 2: return `Better not tell you now.`
             case 3: return `Cannot predict now.`
             case 4: return `Concentrate and ask again.`
+            default: {
+                console.log(`Something went wrong. rnd = ${rnd}`);
+                return `Something went wrong. I'm sorry, consult with the bot mender!`
+            }
         }
     }
 
@@ -61,6 +69,10 @@ exports.run = (client, message, args) => {
             case 2: return `My sources say no.`
             case 3: return `Outlook not so good.`
             case 4: return `Very doubtful.`
+            default: {
+                console.log(`Something went wrong. rnd = ${rnd}`);
+                return `Something went wrong. I'm sorry, consult with the bot mender!`
+            }
         }
     }
 }
