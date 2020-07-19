@@ -7,6 +7,7 @@ exports.run = (client, message, args) => {
     getAnswer(rnd);
 
     function getAnswer(rnd) {
+        console.log(`rnd=${rnd}`);
         if (rnd < 10) message.channel.send(getPositiveAnswer()).catch(console.error);
         else if (rnd < 15) message.channel.send(getNeutralAnswer()).catch(console.error);
         else if (rnd < 20) message.channel.send(getNegativeAnswer()).catch(console.error);
@@ -18,6 +19,8 @@ exports.run = (client, message, args) => {
 
     function getPositiveAnswer() {
         let rnd = Math.floor(Math.random() * 10);
+
+        console.log(`rnd=${rnd}`);
 
         switch (rnd) {
             case 0: return `It is certain.`
@@ -36,6 +39,8 @@ exports.run = (client, message, args) => {
     function getNeutralAnswer() {
         let rnd = Math.floor(Math.random() * 5);
 
+        console.log(`rnd=${rnd}`);
+
         switch (rnd) {
             case 0: return `Reply hazy, try again.`
             case 1: return `Ask again later.`
@@ -46,7 +51,9 @@ exports.run = (client, message, args) => {
     }
 
     function getNegativeAnswer() {
-        let rnd = Math.floor(Math.random() * 10);
+        let rnd = Math.floor(Math.random() * 5);
+
+        console.log(`rnd=${rnd}`);
 
         switch (rnd) {
             case 0: return `Don’t count on it.`
