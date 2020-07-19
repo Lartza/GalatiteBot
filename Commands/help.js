@@ -31,6 +31,10 @@ module.exports.run = (client, message, args) => {
                 {
                     name: 'Emote',
                     value: 'This commad lets you "performe" an emote. You can use this command by doing \`.emote emoteText\` for example \`.emote is really shocked\`'
+                },
+                {
+                    name: 'Butt',
+                    value: 'This command gives you an positive, neutral or negative answer on your question. You can use this command by doing \`.butt question\`'
                 }
             ]
         );
