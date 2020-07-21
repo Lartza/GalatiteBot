@@ -1,12 +1,7 @@
-const { Console } = require("winston/lib/winston/transports");
-
 exports.run = (client, message, args) => {
 
-    let rnd = Math.floor(Math.random() * 20);
-
-    getAnswer(rnd);
-
-    function getAnswer(rnd) {
+    // Define all possible functions
+    const getAnswer = (rnd) => {
         console.log(`rnd=${rnd}`);
         if (rnd < 10) message.channel.send(getPositiveAnswer()).catch(console.error);
         else if (rnd < 15) message.channel.send(getNeutralAnswer()).catch(console.error);
@@ -17,7 +12,7 @@ exports.run = (client, message, args) => {
         }
     }
 
-    function getPositiveAnswer() {
+    const getPositiveAnswer = () => {
         let rnd = Math.floor(Math.random() * 10);
 
         console.log(`rnd=${rnd}`);
@@ -40,7 +35,7 @@ exports.run = (client, message, args) => {
         }
     }
 
-    function getNeutralAnswer() {
+    const getNeutralAnswer = () => {
         let rnd = Math.floor(Math.random() * 5);
 
         console.log(`rnd=${rnd}`);
@@ -58,7 +53,7 @@ exports.run = (client, message, args) => {
         }
     }
 
-    function getNegativeAnswer() {
+    const getNegativeAnswer = () => {
         let rnd = Math.floor(Math.random() * 5);
 
         console.log(`rnd=${rnd}`);
@@ -75,4 +70,7 @@ exports.run = (client, message, args) => {
             }
         }
     }
+
+    // Execute
+    getAnswer(Math.floor(Math.random() * 20));
 }
