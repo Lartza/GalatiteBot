@@ -11,7 +11,7 @@ let token = process.env.token;
 // Require dependencies
 const fs = require('fs');
 const Enmap = require('enmap');
-//const CronJob = require('cron').CronJob;
+const CronJob = require('cron').CronJob;
 
 const helpers = require('./Modules/helpers');
 
