@@ -64,7 +64,7 @@ client.on('ready', () => {
     console.log('Firing up StayAlive CronJob');
 
     const LoreJob = new CronJob(
-        '* * * * *',
+        '*/15 * * * *',
 
         function() {
             console.log('Staying alive', Date.now());
