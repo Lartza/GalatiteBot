@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const config = require('../config');
 
-module.exports.run = async (client, Discord) => {
+module.exports.run = async(client, Discord) => {
     // Execute channel finding here
     const channel = client.channels.cache.get(config.loreId);
 
@@ -9,7 +9,7 @@ module.exports.run = async (client, Discord) => {
     // let array = fs.readFileSync('Lore_Factoids.txt').toString().split('\n').filter(v => v !== '\r');
 
     // Fetch lore from API
-    let {body, type} = await fetch('http://galatiteorder.com/api/lore-factoid').then(res => res.json());
+    let { body, type } = await fetch('http://galatiteorder.com/api/lore-factoid').then(res => res.json());
 
     // Create embed message for the lore message
     let message;

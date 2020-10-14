@@ -11,7 +11,7 @@ let token = process.env.token;
 // Require dependencies
 const fs = require('fs');
 const Enmap = require('enmap');
-const CronJob = require('cron').CronJob;
+//const CronJob = require('cron').CronJob;
 
 const helpers = require('./Modules/helpers');
 
@@ -42,12 +42,14 @@ helpers.getFiles('./Commands').forEach(file => {
 
 console.log('Done')
 
-client.on('ready', () => {
+/*client.on('ready', () => {
     // Create the lore cronjob that fires every
     console.log('Firing up Lore CronJob');
 
     const LoreJob = new CronJob(
-        '1 00 17 * * */2',
+        '1 00 17 * * */
+/*2',*/
+/*
         function() {
             console.log('Sending lore message at', Date.now());
             const lore = require('./Jobs/lore');
@@ -55,7 +57,7 @@ client.on('ready', () => {
         }
     );
     LoreJob.start();
-});
+});*/
 
 
 
