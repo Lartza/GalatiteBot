@@ -13,11 +13,11 @@ module.exports.run = (client, message, args) => {
                 },
                 {
                     name: 'Random',
-                    value: 'This command picks a random option of the ones given. Especiall useful to decide which dungeon to run next. You can use this command by typing \`.random option1 option2 option3\`'
+                    value: 'This command picks a random option of the ones given. Especiall useful to decide which dungeon to run next. You can use this command by typing \`.rand option1 option2 option3\`'
                 },
                 {
                     name: 'Random order',
-                    value: 'This command is picks a random order. You can use this command to randomize the order in which dungeons will be run. You can use this command by doing \`.rdo option1 option2 option3\`'
+                    value: 'This command is picks a random order. You can use this command to randomize the order in which dungeons will be run. You can use this command by doing \`.randord option1 option2 option3\`'
                 },
                 {
                     name: 'Roll',
