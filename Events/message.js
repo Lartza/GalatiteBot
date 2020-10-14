@@ -1,4 +1,7 @@
 module.exports = (client, message) => {
+
+    let prefix = process.env.prefix;
+
     // Ignore bots
     if (message.author.bot) return;
     // Only listen to commands, ignore normal messages
