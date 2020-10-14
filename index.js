@@ -61,7 +61,7 @@ console.log('Done')
 
 client.on('ready', () => {
     // Create the lore cronjob that fires every
-    console.log('Firing up Lore CronJob');
+    console.log('Firing up StayAlive CronJob');
 
     const LoreJob = new CronJob(
         '* * * * *',

@@ -1,6 +1,6 @@
 module.exports.run = async(client, Discord) => {
     // Execute channel finding here
-    const channel = client.channels.get(`732353939093061675`);
+    const channel = client.channels.cache.get("732353939093061675");
 
     // Fetch lore from txt file
     // let array = fs.readFileSync('Lore_Factoids.txt').toString().split('\n').filter(v => v !== '\r');
