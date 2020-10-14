@@ -5,7 +5,7 @@ const client = new Discord.Client();
 //const config = require('./config');
 //client.config = config;
 
-let token = process.env.token;
+var token = os.environ["token"];
 
 
 // Require dependencies
