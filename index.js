@@ -59,6 +59,22 @@ console.log('Done')
     LoreJob.start();
 });*/
 
+client.on('ready', () => {
+    // Create the lore cronjob that fires every
+    console.log('Firing up Lore CronJob');
+
+    const LoreJob = new CronJob(
+        '* * * * *',
+
+        function() {
+            console.log('Staying alive', Date.now());
+            const lore = require('./Jobs/stayAlive');
+            lore.run(client, Discord);
+        }
+    );
+    LoreJob.start();
+});
+
 
 
 client.login(token);
