@@ -2,8 +2,11 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const config = require('./config');
-client.config = config;
+//const config = require('./config');
+//client.config = config;
+
+var token = os.environ["token"];
+
 
 // Require dependencies
 const fs = require('fs');
@@ -45,7 +48,7 @@ client.on('ready', () => {
 
     const LoreJob = new CronJob(
         '1 00 17 * * */2',
-        function () {
+        function() {
             console.log('Sending lore message at', Date.now());
             const lore = require('./Jobs/lore');
             lore.run(client, Discord);
@@ -53,5 +56,7 @@ client.on('ready', () => {
     );
     LoreJob.start();
 });
+
+
 
 client.login(config.token);
