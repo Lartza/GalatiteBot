@@ -2,20 +2,18 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const config = require('./config');
-client.config = config;
+//const config = require('./config');
+//client.config = config;
+
+var token = os.environ["token"];
+
 
 // Require dependencies
 const fs = require('fs');
 const Enmap = require('enmap');
 const CronJob = require('cron').CronJob;
 
-//Test
-/*client.on('message', msg => {
-    if (msg.content === 'ping') {
-        msg.reply('pung');
-    }
-});*/
+const helpers = require('./Modules/helpers');
 
 // Listen to all possible events
 fs.readdir("./Events/", (err, files) => {
@@ -30,22 +28,19 @@ fs.readdir("./Events/", (err, files) => {
 client.commands = new Enmap();
 
 // Register all available commands into the client
-fs.readdir("./Commands/", (err, files) => {
-    if (err) return console.error(err);
-    files.forEach(file => {
-        if (!file.endsWith(".js")) return;
-        let props = require(`./Commands/${file}`);
-        let commandName = file.split(".")[0];
-        console.log(`Attempting to load command ${commandName}`);
+helpers.getFiles('./Commands').forEach(file => {
+    if (!file.endsWith(".js")) return;
 
-        // For now don't register vote
-        // if (commandName === 'vote') return;
+    let props = require(file);
+    let commandName = file.split("/");
+    commandName = commandName[commandName.length - 1].split('.')[0];
 
-        client.commands.set(commandName, props);
-    });
+    console.log(`Attempting to load command ${commandName} from dir: ${file}`);
 
-    console.log('Done')
+    client.commands.set(commandName, props);
 });
+
+console.log('Done')
 
 client.on('ready', () => {
     // Create the lore cronjob that fires every
@@ -53,20 +48,15 @@ client.on('ready', () => {
 
     const LoreJob = new CronJob(
         '1 00 17 * * */2',
-        function () {
+        function() {
             console.log('Sending lore message at', Date.now());
             const lore = require('./Jobs/lore');
             lore.run(client, Discord);
         }
     );
     LoreJob.start();
-
-    // const Job = new CronJob(
-    //     '1 */1 * * * *',
-    //     function () {
-    //         console.log('This is running every 1 minute')
-    //     }
-    // )
 });
+
+
 
 client.login(config.token);
