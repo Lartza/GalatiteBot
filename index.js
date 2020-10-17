@@ -2,10 +2,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-//const config = require('./config');
-//client.config = config;
+const config = require('./config');
+client.config = config;
 
-let token = process.env.token;
+let token = config.token;
 
 
 // Require dependencies
@@ -58,22 +58,6 @@ console.log('Done')
     );
     LoreJob.start();
 });*/
-
-client.on('ready', () => {
-    // Create the lore cronjob that fires every
-    console.log('Firing up StayAlive CronJob');
-
-    const LoreJob = new CronJob(
-        '*/15 * * * *',
-
-        function() {
-            console.log('Staying alive', Date.now());
-            const lore = require('./Jobs/stayAlive');
-            lore.run(client, Discord);
-        }
-    );
-    LoreJob.start();
-});
 
 
 

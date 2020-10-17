@@ -1,6 +1,9 @@
 module.exports = (client, message) => {
 
-    let prefix = process.env.prefix;
+    const config = require('../config');
+    client.config = config;
+
+    let prefix = config.prefix;
 
     // Ignore bots
     if (message.author.bot) return;
