@@ -1,6 +1,7 @@
 module.exports = (message) => {
 
     var level = [
+        [' 1 ', '🥳'],
         ['10', '🥳'],
         ['20', '🥳'],
         ['30', '🥳'],
@@ -24,15 +25,11 @@ module.exports = (message) => {
 
     var items = [
         ['hello', '👋'],
+        ['hi ', '👋'],
+        ['hey', '👋'],
         ['greetings', '👋'],
-        ['morning', '🌅'],
-        ['night', '🌃'],
         ['bye', '👋'],
-        ['haha', '🤣'],
-        ['funny', '🤣'],
-        ['happy', '😊'],
-        ['sad', '😢'],
-        ['birthday', '🎂']
+        ['birthday', '🎂'],
     ];
 
     items.forEach(element => {

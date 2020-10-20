@@ -42,22 +42,21 @@ helpers.getFiles('./Commands').forEach(file => {
 
 console.log('Done')
 
-/*client.on('ready', () => {
+client.on('ready', () => {
     // Create the lore cronjob that fires every
-    console.log('Firing up Lore CronJob');
+    console.log('Firing up Reddit CronJob');
 
-    const LoreJob = new CronJob(
-        '1 00 17 * * */
-/*2',*/
-/*
+    const RedditJob = new CronJob(
+        '0 18 * * *',
+
         function() {
-            console.log('Sending lore message at', Date.now());
-            const lore = require('./Jobs/lore');
-            lore.run(client, Discord);
+            console.log('Sending reddit post at', Date.now());
+            const redditJob = require('./Jobs/reddit');
+            redditJob.run(client, Discord);
         }
     );
-    LoreJob.start();
-});*/
+    RedditJob.start();
+});
 
 
 
