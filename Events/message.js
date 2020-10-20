@@ -7,8 +7,13 @@ module.exports = (client, message) => {
 
     // Ignore bots
     if (message.author.bot) return;
+
+    const reactJ = require('../Jobs/react');
+    reactJ(message);
+
     // Only listen to commands, ignore normal messages
     if (message.content.indexOf(prefix) !== 0) return;
+
 
     // Get the command from the message
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
