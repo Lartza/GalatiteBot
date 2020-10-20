@@ -5,7 +5,7 @@ module.exports.run = (client, message, args) => {
 
     console.log(options)
 
-    message.channel.send(`Your order will be: ***${options}***`)
+    message.channel.send(`Your dungeon order will be: ***${options}***`)
 }
 
 function shuffleArray(array) {
@@ -18,7 +18,7 @@ function shuffleArray(array) {
 
         //switch
         [array[i], array[j]] = [array[j], array[i]];
-
+        
         console.log(array);
     }
 }

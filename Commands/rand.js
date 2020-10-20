@@ -4,5 +4,5 @@ module.exports.run = (client, message, args) => {
 
     let random = args[Math.floor(Math.random() * args.length)];
 
-    message.channel.send(`Your random option will be: ***${random}***`)
+    message.channel.send(`Your random dungeon will be: ***${random}***`)
 }
