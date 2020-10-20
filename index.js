@@ -47,7 +47,7 @@ client.on('ready', () => {
     console.log('Firing up Reddit CronJob');
 
     const RedditJob = new CronJob(
-        '0 18 * * *',
+        '0 16 * * *',
 
         function() {
             console.log('Sending reddit post at', Date.now());
