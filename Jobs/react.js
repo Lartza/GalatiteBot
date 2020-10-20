@@ -30,18 +30,19 @@ module.exports = (message) => {
         ['bye', '👋'],
         ['haha', '🤣'],
         ['funny', '🤣'],
-        ['sad', '😢']
+        ['happy', '😊'],
+        ['sad', '😢'],
+        ['birthday', '🎂']
     ];
 
     items.forEach(element => {
         if (content.includes(element[0])) {
-            if (content.includes('not') || content.includes('isnt') || content.includes('isn\'t') || content.includes('wasnt') || content.includes('wasn\'t')) return;
+            if (content.includes('not ') || content.includes('nt ') || content.includes('n\'t ')) return;
             message.react(element[1]);
             console.log(element[0] + " " + content);
         }
     });
 
-
-
+    if (message.author.id == '123860541537124354') message.react('🏓');
 
 };

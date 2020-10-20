@@ -1,2 +1,2 @@
 
-Copyright (C) 2020 Kevin Jansen
+Copyright (C) 2020 Mark Kleymann
