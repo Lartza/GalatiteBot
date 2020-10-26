@@ -9,7 +9,7 @@ module.exports = (client, message) => {
     if (message.author.bot) return;
 
     const reactJ = require('../Jobs/react');
-    reactJ(message);
+    //reactJ(message);
 
     // Only listen to commands, ignore normal messages
     if (message.content.indexOf(prefix) !== 0) return;
