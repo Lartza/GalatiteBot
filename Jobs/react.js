@@ -7,7 +7,7 @@ module.exports = (message) => {
     const content = message.content.toLowerCase();
 
     //list of items to react to
-    var items = [
+    let items = [
         ['hello', '👋'],
         ['hi ', '👋'],
         [' hey ', '👋'],
