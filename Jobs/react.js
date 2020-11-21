@@ -4,29 +4,22 @@ module.exports = (message) => {
     if (message.author.bot) return;
 
     //get message content
-    const content = message.content.toLowerCase();
+    let content = message.content;
 
-    //list of items to react to
-    let items = [
-        ['hello', '👋'],
-        ['hi ', '👋'],
-        [' hey ', '👋'],
-        ['greetings', '👋'],
-        ['good morning', '👋'],
-        ['good night', '👋'],
-        ['bye', '👋'],
-        ['birthday', '🎂'],
-    ];
+    //helloRegex
+    const helloRegex = RegExp(/\b(hello|hi|hey|greetings|good (morning|night|evening|day)|bye)\b/, 'im');
+    const notRegex = RegExp(/\b(not|n\'?t)\b/, 'im');
+    if (!notRegex.test(content) && helloRegex.test(content)) {
+        message.react('👋');
+        console.log(`reacted to <${content}> with <wave>`)
+    }
 
-    //for each element from items
-    items.forEach(element => {
-        if (content.includes(element[0])) { //if message includes word
-            //exclude messages with variation of not
-            if (content.includes('not ') || content.includes('nt ') || content.includes('n\'t ')) return;
-            message.react(element[1]); //react with emoji
-            console.log('found <' + element[0] + '> in <' + content + '>');
-        }
-    });
+    //birthdayRegex
+    const birthdayRegex = RegExp(/\bb(irth)?day/, 'im');
+    if (birthdayRegex.test(content)) {
+        message.react('🎂');
+        console.log(`reacted to <${content}> with <cake>`)
+    }
 
     //react to sheo with ping pong emoji always
     if (message.author.id == '123860541537124354') message.react('🏓');
