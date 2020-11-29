@@ -56,6 +56,20 @@ client.on('ready', () => {
         }
     );
     RedditJob.start();
+
+
+    console.log('Firing up Crow CronJob');
+
+    const CrowJob = new CronJob(
+        '30 12 * * *',
+
+        function() {
+            console.log('Sending crow post at', Date.now());
+            const crowJob = require('./Jobs/crow');
+            crowJob.run(client, Discord);
+        }
+    );
+    CrowJob.start();
 });
 
 
