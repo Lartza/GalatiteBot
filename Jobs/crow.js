@@ -9,7 +9,7 @@ module.exports.run = async(client, message, args) => {
         .setColor('#0099ff')
         .setTitle('Ah-Ah-Aaaah')
         .setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Corvus_coronoides_-_Doughboy_Head.jpg/220px-Corvus_coronoides_-_Doughboy_Head.jpg')
-        .setFooter('-Australian Raven');
+        .setFooter('-Australian Crow');
 
     channel.send(embed);
 }
