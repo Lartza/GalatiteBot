@@ -1,11 +1,22 @@
 // Initialize a new discord client
 const Discord = require('discord.js');
 const client = new Discord.Client();
+var mysql = require('mysql')
+
 
 const config = require('./config');
 client.config = config;
 
 let token = config.token;
+
+var con = mysql.createConnection({
+    host: config.SQLhost,
+    user: config.SQLuser,
+    password: config.SQLpassword,
+    database: config.SQLdatabase
+})
+
+
 
 
 // Require dependencies
