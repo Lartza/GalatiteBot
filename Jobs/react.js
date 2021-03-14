@@ -21,7 +21,4 @@ module.exports = (message) => {
         console.log(`reacted to <${content}> with <cake>`)
     }
 
-    //react to sheo with ping pong emoji always
-    if (message.author.id == '123860541537124354') message.react('🏓');
-
 };

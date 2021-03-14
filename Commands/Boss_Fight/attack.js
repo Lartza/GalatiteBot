@@ -1,3 +1,5 @@
+//Inactive right now. For activating, change the name to 'attack' (No capital letter).
+
 const config = require('../../config');
 var mysql = require('mysql')
 
