@@ -1,2 +1,2 @@
 
-Copyright (C) 2020 Mark Kleymann
+Copyright (C) 2021 Complicative (Originally by Kevin Janson)
