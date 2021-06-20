@@ -16,13 +16,19 @@ module.exports.run = async(client, message, args) => {
         .then(response => response.json());
 
     let data = result[0].data.children[0].data;
+    let selftext = data.selftext
+
+    if (selftext.length > 2045) {
+        selftext = selftext.substring(0, 2044) + '...'
+    }
+
 
     const embed = new Discord.MessageEmbed()
         .setColor('#0099ff')
         .setTitle(data.title)
         .setURL('https://www.reddit.com/' + link)
         .setAuthor('u/' + data.author)
-        .setDescription(data.selftext)
+        .setDescription(selftext)
         .setImage(data.url_overridden_by_dest)
         .setFooter('This is today\'s top post of /r/elderscrollsonline.');
 

@@ -8,7 +8,7 @@ module.exports = (message) => {
 
     //helloRegex
     const helloRegex = RegExp(/\b(hello|hi|hey|greetings|good (morning|night|evening|day)|bye)\b/, 'im');
-    const notRegex = RegExp(/\b(not|n\'?t)\b/, 'im');
+    const notRegex = RegExp(/\b(not|n'?t)\b/, 'im');
     if (!notRegex.test(content) && helloRegex.test(content)) {
         message.react('👋');
         console.log(`reacted to <${content}> with <wave>`)

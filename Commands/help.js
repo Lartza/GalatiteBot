@@ -13,7 +13,7 @@ module.exports.run = (client, message, args) => {
                 },
                 {
                     name: 'Random',
-                    value: 'This command picks a random option of the ones given. Especiall useful to decide which dungeon to run next. You can use this command by typing \`.random option1 option2 option3\`'
+                    value: 'This command picks a random option of the ones given. Especially useful to decide which dungeon to run next. You can use this command by typing \`.random option1 option2 option3\`'
                 },
                 {
                     name: 'Random order',
@@ -21,11 +21,11 @@ module.exports.run = (client, message, args) => {
                 },
                 {
                     name: 'Roll',
-                    value: 'This command picks a random number from 1 to 100 if writen without parameters. If written with parameters returns a random number from min to max. You can use this command by doing \`.roll\` or \`.roll min max\`'
+                    value: 'This command picks a random number from 1 to 100 if written without parameters. If written with parameters returns a random number from min to max. You can use this command by doing \`.roll\` or \`.roll min max\`'
                 },
                 {
                     name: 'Emote',
-                    value: 'This commad lets you "performe" an emote. You can use this command by doing \`.emote emoteText\` for example \`.emote is really shocked\`'
+                    value: 'This command lets you "perform" an emote. You can use this command by doing \`.emote emoteText\` for example \`.emote is really shocked\`'
                 },
                 {
                     name: 'Butt',

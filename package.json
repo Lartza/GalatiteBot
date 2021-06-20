@@ -8,19 +8,19 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Complicative/GalatiteBot"
+        "url": "git+https://github.com/Lartza/GalatiteBot"
     },
     "keywords": [],
     "author": "Complicative",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/Complicative/GalatiteBot"
+        "url": "https://github.com/Lartza/GalatiteBot"
     },
-    "homepage": "https://github.com/Complicative/GalatiteBot#readme",
+    "homepage": "https://github.com/Lartza/GalatiteBot#readme",
     "dependencies": {
         "cron": "^1.8.2",
         "discord.js": "^12.5.3",
-        "enmap": "^5.8.4",
+        "enmap": "^5.8.5",
         "mysql": "^2.18.1",
         "node-fetch": "^2.6.1",
         "winston": "^3.3.3"

@@ -66,5 +66,5 @@ exports.run = (client, message, args) => {
     //Execute
     const name = message.author.toString(); //getting the name of the writer
 
-    getAnswer(Math.floor(Math.random() * 100), message.author.toString()); //Its a function for testing purposes. Just insert a number of your choise as rnd
+    getAnswer(Math.floor(Math.random() * 100), message.author.toString()); //Its a function for testing purposes. Just insert a number of your choice as rnd
 };
