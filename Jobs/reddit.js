@@ -1,36 +1,36 @@
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
 
-module.exports.run = async(client, message, args) => {
+module.exports.run = async (client) => {
 
-    const channel = client.channels.cache.get('640490309150834689');
+	const channel = client.channels.cache.get('640490309150834689');
 
-    let result = await fetch('https://www.reddit.com/r/elderscrollsonline/top/.json?t=day')
-        .then(response => response.json());
+	let result = await fetch('https://www.reddit.com/r/elderscrollsonline/top/.json?t=day')
+		.then(response => response.json());
 
-    let link = result.data.children[0].data.permalink;
+	const link = result.data.children[0].data.permalink;
 
-    console.log(link);
+	console.log(link);
 
-    result = await fetch('https://www.reddit.com/' + link + ".json")
-        .then(response => response.json());
+	result = await fetch('https://www.reddit.com/' + link + '.json')
+		.then(response => response.json());
 
-    let data = result[0].data.children[0].data;
-    let selftext = data.selftext
+	const data = result[0].data.children[0].data;
+	let selftext = data.selftext;
 
-    if (selftext.length > 2045) {
-        selftext = selftext.substring(0, 2044) + '...'
-    }
+	if (selftext.length > 2045) {
+		selftext = selftext.substring(0, 2044) + '...';
+	}
 
 
-    const embed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle(data.title)
-        .setURL('https://www.reddit.com/' + link)
-        .setAuthor('u/' + data.author)
-        .setDescription(selftext)
-        .setImage(data.url_overridden_by_dest)
-        .setFooter('This is today\'s top post of /r/elderscrollsonline.');
+	const embed = new Discord.MessageEmbed()
+		.setColor('#0099ff')
+		.setTitle(data.title)
+		.setURL('https://www.reddit.com/' + link)
+		.setAuthor('u/' + data.author)
+		.setDescription(selftext)
+		.setImage(data.url_overridden_by_dest)
+		.setFooter('This is today\'s top post of /r/elderscrollsonline.');
 
-    channel.send(embed);
-}
+	channel.send(embed);
+};
