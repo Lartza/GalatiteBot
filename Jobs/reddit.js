@@ -1,34 +1,33 @@
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
 
+const fetchPost = async () => {
+	const feed = await fetch('https://www.reddit.com/r/elderscrollsonline/top/.json?t=day');
+	const feed_json = await feed.json();
+	const link = await feed_json.data.children[0].data.permalink;
+
+	const post = await fetch('https://www.reddit.com' + link + '.json');
+	const json = await post.json();
+	const data = await json[0].data.children[0].data;
+
+	if (data.selftext.length > 2045) {
+		data.selftext = data.selftext.substring(0, 2044) + '...';
+	}
+	return data;
+};
+
 module.exports.run = async (client) => {
 
 	const channel = client.channels.cache.get('640490309150834689');
-
-	let result = await fetch('https://www.reddit.com/r/elderscrollsonline/top/.json?t=day')
-		.then(response => response.json());
-
-	const link = result.data.children[0].data.permalink;
-
-	console.log(link);
-
-	result = await fetch('https://www.reddit.com/' + link + '.json')
-		.then(response => response.json());
-
-	const data = result[0].data.children[0].data;
-	let selftext = data.selftext;
-
-	if (selftext.length > 2045) {
-		selftext = selftext.substring(0, 2044) + '...';
-	}
-
+	const data = await fetchPost();
+	console.log(data);
 
 	const embed = new Discord.MessageEmbed()
 		.setColor('#0099ff')
 		.setTitle(data.title)
-		.setURL('https://www.reddit.com/' + link)
+		.setURL('https://www.reddit.com' + data.permalink)
 		.setAuthor('u/' + data.author)
-		.setDescription(selftext)
+		.setDescription(data.selftext)
 		.setImage(data.url_overridden_by_dest)
 		.setFooter('This is today\'s top post of /r/elderscrollsonline.');
 

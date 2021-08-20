@@ -9,8 +9,8 @@ module.exports.run = (client, message) => {
 
 	if (message.member.roles.cache.some(role => role.name === 'Discord-Bound')) return;
 
-	const role = message.guild.roles.cache.find(role => role.name === 'Discord-Bound');
-	message.member.roles.add(role);
+	const db_role = message.guild.roles.cache.find(role => role.name === 'Discord-Bound');
+	message.member.roles.add(db_role);
 
 	channel.send(`Greetings! Welcome to the Galatite Order! ${name}, take a look around. There is always someone to help ! We hope you'll have a majestic time here.`);
 
