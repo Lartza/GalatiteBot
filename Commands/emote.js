@@ -18,7 +18,7 @@ exports.run = async (client, message) => {
 
     // send fake emote
     try {
-        await message.channel.send(embed);
+        await message.channel.send({ embeds: [embed] });
     }
     catch (e) {
         console.error(e);

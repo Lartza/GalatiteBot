@@ -32,7 +32,7 @@ module.exports.run = async (client) => {
             .setImage(data.url_overridden_by_dest)
             .setFooter('This is today\'s top post of /r/elderscrollsonline.');
 
-        await channel.send(embed);
+        await channel.send({ embeds: [embed] });
     }
     catch (e) {
         console.error(e);

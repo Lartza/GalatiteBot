@@ -29,5 +29,5 @@ module.exports.run = async (client, message) => {
                 value: 'This command gives you an positive, neutral or negative answer on your question. You can use this command by doing `.butt question`',
             },
         );
-    await message.channel.send(embed);
+    await message.channel.send({ embeds: [embed] });
 };

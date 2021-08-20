@@ -11,7 +11,7 @@ module.exports.run = async (client) => {
         .setFooter('-Australian Crow');
 
     try {
-        await channel.send(embed);
+        await channel.send({ embeds: [embed] });
     }
     catch (e) {
         console.error(e);
