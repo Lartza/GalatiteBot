@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-exports.run = (client, message) => {
+exports.run = async (client, message) => {
 
     // get the content of the emote
     const emoteContent = message.content.split('.emote')[1];
@@ -17,5 +17,10 @@ exports.run = (client, message) => {
         .setDescription(`${name} ${emoteContent}`);
 
     // send fake emote
-    message.channel.send(embed).catch(console.error);
+    try {
+        await message.channel.send(embed);
+    }
+    catch (e) {
+        console.error(e);
+    }
 };

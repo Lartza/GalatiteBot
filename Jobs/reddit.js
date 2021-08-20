@@ -19,17 +19,22 @@ const fetchPost = async () => {
 module.exports.run = async (client) => {
 
     const channel = client.channels.cache.get('640490309150834689');
-    const data = await fetchPost();
-    console.log(data);
+    try {
+        const data = await fetchPost();
+        console.log(data);
 
-    const embed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle(data.title)
-        .setURL('https://www.reddit.com' + data.permalink)
-        .setAuthor('u/' + data.author)
-        .setDescription(data.selftext)
-        .setImage(data.url_overridden_by_dest)
-        .setFooter('This is today\'s top post of /r/elderscrollsonline.');
+        const embed = new Discord.MessageEmbed()
+            .setColor('#0099ff')
+            .setTitle(data.title)
+            .setURL('https://www.reddit.com' + data.permalink)
+            .setAuthor('u/' + data.author)
+            .setDescription(data.selftext)
+            .setImage(data.url_overridden_by_dest)
+            .setFooter('This is today\'s top post of /r/elderscrollsonline.');
 
-    channel.send(embed);
+        await channel.send(embed);
+    }
+    catch (e) {
+        console.error(e);
+    }
 };

@@ -1,8 +1,8 @@
-module.exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
 
     console.log(args);
 
     const random = args[Math.floor(Math.random() * args.length)];
 
-    message.channel.send(`Your random option will be: ***${random}***`);
+    await message.channel.send(`Your random option will be: ***${random}***`);
 };

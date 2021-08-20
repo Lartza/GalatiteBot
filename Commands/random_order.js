@@ -1,11 +1,11 @@
-module.exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
 
     const options = args;
     shuffleArray(options);
 
     console.log(options);
 
-    message.channel.send(`Your order will be: ***${options}***`);
+    await message.channel.send(`Your order will be: ***${options}***`);
 };
 
 function shuffleArray(array) {

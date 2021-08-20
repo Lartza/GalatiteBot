@@ -73,4 +73,4 @@ client.on('ready', () => {
 });
 
 
-client.login(token).catch(err => console.log(err));
+client.login(token).catch(e => console.error(e));

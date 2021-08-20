@@ -1,14 +1,19 @@
-exports.run = (client, message) => {
+exports.run = async (client, message) => {
 
     // Define all possible functions
-    const getAnswer = (rnd) => {
+    const getAnswer = async (rnd) => {
         console.log(`rnd=${rnd}`);
-        if (rnd < 10) {message.channel.send(getPositiveAnswer()).catch(console.error);}
-        else if (rnd < 15) {message.channel.send(getNeutralAnswer()).catch(console.error);}
-        else if (rnd < 20) {message.channel.send(getNegativeAnswer()).catch(console.error);}
-        else {
-            console.log(`Something went wrong. rnd = ${rnd}`);
-            message.channel.send('Something went wrong. I\'m sorry, consult with the bot mender!').catch(console.error);
+        try {
+            if (rnd < 10) {await message.channel.send(getPositiveAnswer());}
+            else if (rnd < 15) {await message.channel.send(getNeutralAnswer());}
+            else if (rnd < 20) {await message.channel.send(getNegativeAnswer());}
+            else {
+                console.warn(`Something went wrong. rnd = ${rnd}`);
+                await message.channel.send('Something went wrong. I\'m sorry, consult with the bot mender!');
+            }
+        }
+        catch (e) {
+            console.error(e);
         }
     };
 
@@ -29,7 +34,7 @@ exports.run = (client, message) => {
         case 8: return 'Yes.';
         case 9: return 'Signs point to yes.';
         default: {
-            console.log(`Something went wrong. rnd = ${rnd}`);
+            console.warn(`Something went wrong. rnd = ${rnd}`);
             return 'Something went wrong. I\'m sorry, consult with the bot mender!';
         }
         }
@@ -47,7 +52,7 @@ exports.run = (client, message) => {
         case 3: return 'Cannot predict now.';
         case 4: return 'Concentrate and ask again.';
         default: {
-            console.log(`Something went wrong. rnd = ${rnd}`);
+            console.warn(`Something went wrong. rnd = ${rnd}`);
             return 'Something went wrong. I\'m sorry, consult with the bot mender!';
         }
         }
@@ -65,12 +70,12 @@ exports.run = (client, message) => {
         case 3: return 'Outlook not so good.';
         case 4: return 'Very doubtful.';
         default: {
-            console.log(`Something went wrong. rnd = ${rnd}`);
+            console.warn(`Something went wrong. rnd = ${rnd}`);
             return 'Something went wrong. I\'m sorry, consult with the bot mender!';
         }
         }
     };
 
     // Execute
-    getAnswer(Math.floor(Math.random() * 20));
+    await getAnswer(Math.floor(Math.random() * 20));
 };

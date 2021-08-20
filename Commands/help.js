@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-module.exports.run = (client, message) => {
+module.exports.run = async (client, message) => {
 
     const embed = new Discord.MessageEmbed()
         .setTitle('Galatite Bot')
@@ -29,5 +29,5 @@ module.exports.run = (client, message) => {
                 value: 'This command gives you an positive, neutral or negative answer on your question. You can use this command by doing `.butt question`',
             },
         );
-    message.channel.send(embed);
+    await message.channel.send(embed);
 };

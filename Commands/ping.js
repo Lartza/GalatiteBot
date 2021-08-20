@@ -1,15 +1,26 @@
-exports.run = (client, message) => {
+exports.run = async (client, message) => {
 
-    const getAnswer = (rnd) => {
+    const getAnswer = async (rnd) => {
         console.log(`rnd=${rnd}`);
 
-        if (rnd < 85) {message.channel.send(getConAnswer()).catch(console.error);}
-        else if (rnd < 90) {message.channel.send(getWinAnswer()).catch(console.error);}
-        else if (rnd < 100) {message.channel.send(getLoseAnswer()).catch(console.error);}
-        // Error (should not happen :D)
-        else {
-            console.log(`Something went wrong. rnd = ${rnd}`);
-            message.channel.send('Something went wrong. I\'m sorry, consult with the bot mender! (but he will probably not care)').catch(console.error);
+        try {
+            if (rnd < 85) {
+                await message.channel.send(getConAnswer());
+            }
+            else if (rnd < 90) {
+                await message.channel.send(getWinAnswer());
+            }
+            else if (rnd < 100) {
+                await message.channel.send(getLoseAnswer());
+            }
+            else {
+                // Error (should not happen :D)
+                console.warn(`Something went wrong. rnd = ${rnd}`);
+                await message.channel.send('Something went wrong. I\'m sorry, consult with the bot mender! (but he will probably not care)');
+            }
+        }
+        catch (e) {
+            console.error(e);
         }
     };
 
@@ -72,5 +83,5 @@ exports.run = (client, message) => {
     const name = message.author.toString();
 
     // Its a function for testing purposes. Just insert a number of your choice as rnd
-    getAnswer(Math.floor(Math.random() * 100), message.author.toString());
+    await getAnswer(Math.floor(Math.random() * 100), message.author.toString());
 };

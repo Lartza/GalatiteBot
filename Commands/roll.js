@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => {
+exports.run = async (client, message, args) => {
 
     // log potential min and max
     console.log(`Args0 = ${args[0]} Args1 = ${args[1]}`);
@@ -26,5 +26,10 @@ exports.run = (client, message, args) => {
     console.log(`Result = ${result}`);
 
     // reply the result
-    message.channel.send(result + ' :game_die:').catch(console.error);
+    try {
+        await message.channel.send(result + ' :game_die:');
+    }
+    catch (e) {
+        console.error(e);
+    }
 };

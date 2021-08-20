@@ -10,5 +10,10 @@ module.exports.run = async (client) => {
         .setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Corvus_coronoides_-_Doughboy_Head.jpg/220px-Corvus_coronoides_-_Doughboy_Head.jpg')
         .setFooter('-Australian Crow');
 
-    channel.send(embed);
+    try {
+        await channel.send(embed);
+    }
+    catch (e) {
+        console.error(e);
+    }
 };

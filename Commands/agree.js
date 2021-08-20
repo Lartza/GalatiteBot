@@ -1,4 +1,4 @@
-module.exports.run = (client, message) => {
+module.exports.run = async (client, message) => {
     message.delete();
 
     const channel = client.channels.cache.get('652564165994610688');
@@ -12,7 +12,11 @@ module.exports.run = (client, message) => {
     const db_role = message.guild.roles.cache.find(role => role.name === 'Discord-Bound');
     message.member.roles.add(db_role);
 
-    channel.send(`Greetings! Welcome to the Galatite Order! ${name}, take a look around. There is always someone to help ! We hope you'll have a majestic time here.`);
-
+    try {
+        await channel.send(`Greetings! Welcome to the Galatite Order! ${name}, take a look around. There is always someone to help ! We hope you'll have a majestic time here.`);
+    }
+    catch (e) {
+        console.error(e);
+    }
     console.log(`${username} ${name} is now a <Discord-Bound>`);
 };
