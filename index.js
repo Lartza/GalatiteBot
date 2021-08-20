@@ -49,10 +49,10 @@ client.on('ready', () => {
     const RedditJob = new CronJob(
         '0 16 * * *',
 
-        function() {
+        async function() {
             console.log('Sending reddit post at', Date.now());
             const redditJob = require('./Jobs/reddit');
-            redditJob.run(client);
+            await redditJob.run(client);
         },
     );
     RedditJob.start();
@@ -63,14 +63,14 @@ client.on('ready', () => {
     const CrowJob = new CronJob(
         '30 12 * * *',
 
-        function() {
+        async function() {
             console.log('Sending crow post at', Date.now());
             const crowJob = require('./Jobs/crow');
-            crowJob.run(client);
+            await crowJob.run(client);
         },
     );
     CrowJob.start();
 });
 
 
-client.login(token);
+client.login(token).catch(err => console.log(err));

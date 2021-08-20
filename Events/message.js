@@ -1,4 +1,4 @@
-module.exports = (client, message) => {
+module.exports = async (client, message) => {
 
     const config = require('../config');
     client.config = config;
@@ -9,7 +9,7 @@ module.exports = (client, message) => {
     if (message.author.bot) return;
 
     const reactJ = require('../Jobs/react');
-    reactJ(message);
+    await reactJ(message);
 
     // Only listen to commands, ignore normal messages
     if (message.content.indexOf(prefix) !== 0) return;

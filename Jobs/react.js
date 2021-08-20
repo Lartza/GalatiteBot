@@ -1,4 +1,4 @@
-module.exports = (message) => {
+module.exports = async (message) => {
 
     // Ignore bots
     if (message.author.bot) return;
@@ -10,14 +10,14 @@ module.exports = (message) => {
     const helloRegex = RegExp(/\b(hello|hi|hey|greetings|good (morning|night|evening|day)|bye)\b/, 'im');
     const notRegex = RegExp(/\b(not|n'?t)\b/, 'im');
     if (!notRegex.test(content) && helloRegex.test(content)) {
-        message.react('👋');
+        await message.react('👋');
         console.log(`reacted to <${content}> with <wave>`);
     }
 
     // birthdayRegex
     const birthdayRegex = RegExp(/\bb(irth)?day/, 'im');
     if (birthdayRegex.test(content)) {
-        message.react('🎂');
+        await message.react('🎂');
         console.log(`reacted to <${content}> with <cake>`);
     }
 
