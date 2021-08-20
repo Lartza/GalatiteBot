@@ -11,7 +11,6 @@ const token = config.token;
 
 // Require dependencies
 const fs = require('fs');
-const Enmap = require('enmap');
 const CronJob = require('cron').CronJob;
 
 const helpers = require('./Modules/helpers');
@@ -26,7 +25,7 @@ fs.readdir('./Events/', (err, files) => {
     });
 });
 
-client.commands = new Enmap();
+client.commands = new Map();
 
 // Register all available commands into the client
 helpers.getFiles('./Commands').forEach(file => {
