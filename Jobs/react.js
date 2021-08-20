@@ -1,5 +1,4 @@
 module.exports = async (message) => {
-
     // Ignore bots
     if (message.author.bot) return;
 
@@ -20,5 +19,4 @@ module.exports = async (message) => {
         await message.react('🎂');
         console.log(`reacted to <${content}> with <cake>`);
     }
-
 };

@@ -1,5 +1,4 @@
 module.exports = async (client, message) => {
-
     const config = require('../config');
     client.config = config;
 
