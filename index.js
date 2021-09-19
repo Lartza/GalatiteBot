@@ -12,10 +12,10 @@ const token = config.token;
 // Require dependencies
 import fs from 'fs';
 import { CronJob } from 'cron';
-import * as redditJob from './Jobs/reddit';
-import * as crowJob from './Jobs/crow';
+import * as redditJob from './Jobs/reddit.js';
+import * as crowJob from './Jobs/crow.js';
 
-import { getFiles } from './Modules/helpers';
+import { getFiles } from './Modules/helpers.js';
 
 // Listen to all possible events
 fs.readdir('./Events/', (err, files) => {
