@@ -15,7 +15,7 @@ import { CronJob } from 'cron';
 import * as redditJob from './Jobs/reddit.js';
 import * as crowJob from './Jobs/crow.js';
 
-import { getFiles } from './Modules/helpers.js';
+import helpers from './Modules/helpers.js';
 
 // Listen to all possible events
 fs.readdir('./Events/', (err, files) => {
@@ -30,7 +30,7 @@ fs.readdir('./Events/', (err, files) => {
 client.commands = new Map();
 
 // Register all available commands into the client
-getFiles('./Commands').forEach(file => {
+helpers.getFiles('./Commands').forEach(file => {
     if (!file.endsWith('.js')) return;
 
     const props = require(file);
