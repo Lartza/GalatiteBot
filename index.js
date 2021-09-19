@@ -19,8 +19,18 @@ client.on('messageCreate', messageCreate.bind(null, client));
 // Register all available commands into the client
 client.commands = new Map();
 
+import * as butt from './Commands/butt.js';
+client.commands.set('butt', butt);
+import * as help from './Commands/help.js';
+client.commands.set('help', help);
+import * as emote from './Commands/emote.js';
+client.commands.set('emote', emote);
 import * as ping from './Commands/ping.js';
 client.commands.set('ping', ping);
+import * as random from './Commands/random.js';
+client.commands.set('random', random);
+import * as roll from './Commands/roll.js';
+client.commands.set('roll', roll);
 
 console.log('Done');
 

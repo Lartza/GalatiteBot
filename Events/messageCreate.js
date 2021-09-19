@@ -24,6 +24,9 @@ export async function messageCreate(client, message) {
     // Fetch the executable command from the client
     const cmd = client.commands.get(command);
 
-    if (!cmd) return;
+    if (!cmd) {
+        console.log('Command not found');
+        return;
+    }
     cmd.run(client, message);
 }
