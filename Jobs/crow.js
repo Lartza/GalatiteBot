@@ -1,24 +1,25 @@
-const Discord = require('discord.js');
-const Unsplash = require('unsplash-js');
-const fetch = require('node-fetch');
+import { MessageEmbed } from 'discord.js';
+import { createApi } from 'unsplash-js';
+import nodeFetch from 'node-fetch';
+
+import config from '../config';
 
 module.exports.run = async (client) => {
 
     const channel = client.channels.cache.get('640297840639344641');
 
-    const config = require('../config');
     const unsplashAccessKey = config.unsplashAccessKey;
 
-    let embed = new Discord.MessageEmbed()
+    let embed = new MessageEmbed()
         .setColor('#0099ff')
         .setTitle('Ah-Ah-Aaaah')
         .setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Corvus_coronoides_-_Doughboy_Head.jpg/220px-Corvus_coronoides_-_Doughboy_Head.jpg')
         .setFooter('-Australian Crow');
 
     if (unsplashAccessKey !== '') {
-        const unsplash = Unsplash.createApi({
+        const unsplash = createApi({
             accessKey: unsplashAccessKey,
-            fetch: fetch,
+            fetch: nodeFetch,
         });
 
         unsplash.photos.getRandom({ query: 'crow' }).then(result => {

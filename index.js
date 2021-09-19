@@ -1,19 +1,21 @@
 // Initialize a new discord client
-const { Client, Intents } = require('discord.js');
+import { Client, Intents } from 'discord.js';
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
 
 
-const config = require('./config');
+import config from './config';
 client.config = config;
 
 const token = config.token;
 
 
 // Require dependencies
-const fs = require('fs');
-const CronJob = require('cron').CronJob;
+import fs from 'fs';
+import { CronJob } from 'cron';
+import * as redditJob from './Jobs/reddit';
+import * as crowJob from './Jobs/crow';
 
-const helpers = require('./Modules/helpers');
+import { getFiles } from './Modules/helpers';
 
 // Listen to all possible events
 fs.readdir('./Events/', (err, files) => {
@@ -28,7 +30,7 @@ fs.readdir('./Events/', (err, files) => {
 client.commands = new Map();
 
 // Register all available commands into the client
-helpers.getFiles('./Commands').forEach(file => {
+getFiles('./Commands').forEach(file => {
     if (!file.endsWith('.js')) return;
 
     const props = require(file);
@@ -51,7 +53,6 @@ client.on('ready', () => {
 
         async function() {
             console.log('Sending reddit post at', Date.now());
-            const redditJob = require('./Jobs/reddit');
             await redditJob.run(client);
         },
     );
@@ -65,7 +66,6 @@ client.on('ready', () => {
 
         async function() {
             console.log('Sending crow post at', Date.now());
-            const crowJob = require('./Jobs/crow');
             await crowJob.run(client);
         },
     );

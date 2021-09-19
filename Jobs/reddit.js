@@ -1,5 +1,5 @@
-const fetch = require('node-fetch');
-const Discord = require('discord.js');
+import fetch from 'node-fetch';
+import { MessageEmbed } from 'discord.js';
 
 const fetchPost = async () => {
     const feed = await fetch('https://www.reddit.com/r/elderscrollsonline/top/.json?t=day');
@@ -22,7 +22,7 @@ module.exports.run = async (client) => {
     try {
         const data = await fetchPost();
 
-        const embed = new Discord.MessageEmbed()
+        const embed = new MessageEmbed()
             .setColor('#0099ff')
             .setTitle(data.title)
             .setURL('https://www.reddit.com' + data.permalink)

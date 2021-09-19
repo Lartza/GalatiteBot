@@ -1,8 +1,8 @@
-const Discord = require('discord.js');
+import { MessageEmbed } from 'discord.js';
 
 module.exports.run = async (client, message) => {
 
-    const embed = new Discord.MessageEmbed()
+    const embed = new MessageEmbed()
         .setTitle('Galatite Bot')
         .setDescription('These are all the things I can help you with. A command you can run will always be in a `code` block')
         .setColor('#7289DA')

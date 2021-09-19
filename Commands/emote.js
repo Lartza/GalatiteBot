@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+import { MessageEmbed } from 'discord.js';
 
 exports.run = async (client, message) => {
 
@@ -12,7 +12,7 @@ exports.run = async (client, message) => {
     message.delete();
 
     // create the fake emote
-    const embed = new Discord.MessageEmbed()
+    const embed = new MessageEmbed()
         .setColor('#0099ff')
         .setDescription(`${name} ${emoteContent}`);
 

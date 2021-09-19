@@ -1,5 +1,7 @@
+import config from '../config';
+import reactJ from '../Jobs/react';
+
 module.exports = async (client, message) => {
-    const config = require('../config');
     client.config = config;
 
     const prefix = config.prefix;
@@ -7,7 +9,6 @@ module.exports = async (client, message) => {
     // Ignore bots
     if (message.author.bot) return;
 
-    const reactJ = require('../Jobs/react');
     await reactJ(message);
 
     // Only listen to commands, ignore normal messages
