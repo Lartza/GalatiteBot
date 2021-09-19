@@ -1,4 +1,4 @@
-exports.run = async (client, message) => {
+export async function run(client, message) {
 
     // Define all possible functions
     const getAnswer = async (rnd) => {
@@ -78,4 +78,4 @@ exports.run = async (client, message) => {
 
     // Execute
     await getAnswer(Math.floor(Math.random() * 20));
-};
+}

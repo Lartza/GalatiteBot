@@ -1,4 +1,4 @@
-exports.run = async (client, message) => {
+export async function run(client, message) {
 
     const getAnswer = async (rnd) => {
         console.log(`rnd=${rnd}`);
@@ -84,4 +84,4 @@ exports.run = async (client, message) => {
 
     // Its a function for testing purposes. Just insert a number of your choice as rnd
     await getAnswer(Math.floor(Math.random() * 100), message.author.toString());
-};
+}

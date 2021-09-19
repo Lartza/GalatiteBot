@@ -1,4 +1,4 @@
-exports.run = async (client, message, args) => {
+export async function run(client, message, args) {
 
     // log potential min and max
     console.log(`Args0 = ${args[0]} Args1 = ${args[1]}`);
@@ -32,4 +32,4 @@ exports.run = async (client, message, args) => {
     catch (e) {
         console.error(e);
     }
-};
+}

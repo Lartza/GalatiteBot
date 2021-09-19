@@ -16,7 +16,7 @@ const fetchPost = async () => {
     return data;
 };
 
-module.exports.run = async (client) => {
+export async function run(client) {
 
     const channel = client.channels.cache.get('640490309150834689');
     try {
@@ -36,4 +36,4 @@ module.exports.run = async (client) => {
     catch (e) {
         console.error(e);
     }
-};
+}

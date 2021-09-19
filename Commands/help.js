@@ -1,13 +1,16 @@
 import { MessageEmbed } from 'discord.js';
 
-module.exports.run = async (client, message) => {
+export async function run(client, message) {
 
     const embed = new MessageEmbed()
         .setTitle('Galatite Bot')
         .setDescription('These are all the things I can help you with. A command you can run will always be in a `code` block')
         .setColor('#7289DA')
         .addFields(
-            { name: 'Ping Pong', value: 'Just for fun. `.ping`' },
+            {
+                name: 'Ping Pong',
+                value: 'Just for fun. `.ping`',
+            },
             {
                 name: 'Random',
                 value: 'This command picks a random option of the ones given. Especially useful to decide which dungeon to run next. You can use this command by typing `.random option1 option2 option3`',
@@ -30,4 +33,4 @@ module.exports.run = async (client, message) => {
             },
         );
     await message.channel.send({ embeds: [embed] });
-};
+}

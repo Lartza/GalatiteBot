@@ -1,7 +1,7 @@
 import config from '../config.json';
-import reactJ from '../Jobs/react.js';
+import { react } from '../Jobs/react.js';
 
-module.exports = async (client, message) => {
+export async function messageCreate(client, message) {
     client.config = config;
 
     const prefix = config.prefix;
@@ -9,7 +9,7 @@ module.exports = async (client, message) => {
     // Ignore bots
     if (message.author.bot) return;
 
-    await reactJ(message);
+    await react(message);
 
     // Only listen to commands, ignore normal messages
     if (message.content.indexOf(prefix) !== 0) return;
@@ -26,4 +26,4 @@ module.exports = async (client, message) => {
 
     if (!cmd) return;
     cmd.run(client, message);
-};
+}

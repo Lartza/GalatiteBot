@@ -1,4 +1,4 @@
-module.exports.run = async (client, message) => {
+export async function run(client, message) {
     message.delete();
 
     const channel = client.channels.cache.get('652564165994610688');
@@ -19,4 +19,4 @@ module.exports.run = async (client, message) => {
         console.error(e);
     }
     console.log(`${username} ${name} is now a <Discord-Bound>`);
-};
+}

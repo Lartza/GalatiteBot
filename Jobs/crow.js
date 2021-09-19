@@ -4,7 +4,7 @@ import nodeFetch from 'node-fetch';
 
 import config from '../config.json';
 
-module.exports.run = async (client) => {
+export async function run(client) {
 
     const channel = client.channels.cache.get('640297840639344641');
 
@@ -41,4 +41,4 @@ module.exports.run = async (client) => {
     catch (e) {
         console.error(e);
     }
-};
+}

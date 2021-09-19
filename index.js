@@ -2,45 +2,25 @@
 import { Client, Intents } from 'discord.js';
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
 
-
 import config from './config.json';
 client.config = config;
 
 const token = config.token;
 
-
 // Require dependencies
-import fs from 'fs';
 import { CronJob } from 'cron';
 import * as redditJob from './Jobs/reddit.js';
 import * as crowJob from './Jobs/crow.js';
 
-import * as helpers from './Modules/helpers.js';
-
 // Listen to all possible events
-fs.readdir('./Events/', (err, files) => {
-    if (err) return console.error(err);
-    files.forEach(file => {
-        const event = require(`./Events/${file}`);
-        const eventName = file.split('.')[0];
-        client.on(eventName, event.bind(null, client));
-    });
-});
-
-client.commands = new Map();
+import { messageCreate } from './Events/messageCreate.js';
+client.on('messageCreate', messageCreate.bind(null, client));
 
 // Register all available commands into the client
-helpers.getFiles('./Commands').forEach(file => {
-    if (!file.endsWith('.js')) return;
+client.commands = new Map();
 
-    const props = require(file);
-    let commandName = file.split('/');
-    commandName = commandName[commandName.length - 1].split('.')[0];
-
-    console.log(`Attempting to load command ${commandName} from dir: ${file}`);
-
-    client.commands.set(commandName, props);
-});
+import * as ping from './Commands/ping.js';
+client.commands.set('ping', ping);
 
 console.log('Done');
 

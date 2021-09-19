@@ -1,4 +1,4 @@
-module.exports.run = async (client, message, args) => {
+export async function run(client, message, args) {
 
     const options = args;
     shuffleArray(options);
@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
     console.log(options);
 
     await message.channel.send(`Your order will be: ***${options}***`);
-};
+}
 
 function shuffleArray(array) {
     for (let i = 0; i < array.length; i++) {

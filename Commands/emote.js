@@ -1,6 +1,6 @@
 import { MessageEmbed } from 'discord.js';
 
-exports.run = async (client, message) => {
+export async function run(client, message) {
 
     // get the content of the emote
     const emoteContent = message.content.split('.emote')[1];
@@ -23,4 +23,4 @@ exports.run = async (client, message) => {
     catch (e) {
         console.error(e);
     }
-};
+}
