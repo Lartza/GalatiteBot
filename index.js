@@ -15,7 +15,7 @@ import { CronJob } from 'cron';
 import * as redditJob from './Jobs/reddit.js';
 import * as crowJob from './Jobs/crow.js';
 
-import helpers from './Modules/helpers.js';
+import * as helpers from './Modules/helpers.js';
 
 // Listen to all possible events
 fs.readdir('./Events/', (err, files) => {
