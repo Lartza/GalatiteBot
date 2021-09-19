@@ -2,7 +2,7 @@ import { MessageEmbed } from 'discord.js';
 import { createApi } from 'unsplash-js';
 import nodeFetch from 'node-fetch';
 
-import config from '../config';
+import config from '../config.json';
 
 module.exports.run = async (client) => {
 

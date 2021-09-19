@@ -1,4 +1,4 @@
-import config from '../config';
+import config from '../config.json';
 import reactJ from '../Jobs/react';
 
 module.exports = async (client, message) => {
