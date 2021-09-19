@@ -21,7 +21,6 @@ module.exports.run = async (client) => {
     const channel = client.channels.cache.get('640490309150834689');
     try {
         const data = await fetchPost();
-        console.log(data);
 
         const embed = new Discord.MessageEmbed()
             .setColor('#0099ff')
