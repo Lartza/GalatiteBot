@@ -1,11 +1,12 @@
 export async function run(client, message, args) {
+    if (args !== undefined) {
+        const options = args;
+        shuffleArray(options);
 
-    const options = args;
-    shuffleArray(options);
+        console.log(options);
 
-    console.log(options);
-
-    await message.channel.send(`Your order will be: ***${options}***`);
+        await message.channel.send(`Your order will be: ***${options}***`);
+    }
 }
 
 function shuffleArray(array) {
