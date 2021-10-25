@@ -28,7 +28,8 @@ export async function run(client, message, args) {
         // reply the result
         try {
             await message.channel.send(result + ' :game_die:');
-        } catch (e) {
+        }
+        catch (e) {
             console.error(e);
         }
     }
